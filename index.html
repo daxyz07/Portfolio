@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dax Sojitra | Frontend Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config={
+            theme:{
+                extend:{
+                    colors:{
+                        primary:'#3b82f6',
+                        secondary:'#64748b'
+                    },
+                    borderRadius:{
+                        'none':'0px',
+                        'sm':'4px',
+                        DEFAULT:'8px',
+                        'md':'12px',
+                        'lg':'16px',
+                        'xl':'20px',
+                        '2xl':'24px',
+                        '3xl':'32px',
+                        'full':'9999px',
+                        'button':'8px'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1);
+        }
+        
+        .skill-bar {
+            position: relative;
+            height: 8px;
+            border-radius: 4px;
+            background-color: #1e293b;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+        
+        input, textarea {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            transition: border-color 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            border-color: #3b82f6;
+            outline: none;
+        }
+        
+        .social-icon {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #3b82f6;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu {
+            transition: transform 0.3s ease;
+            transform: translateX(100%);
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .filter-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        /* From Uiverse.io by Dennyhml */ 
+.bubble {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 25px rgba (255, 255, 255, 0.25);
+  animation: animate_4010 8s ease-in-out infinite;
+}
+
+.bubble:nth-child(2) {
+  position: relative;
+  zoom: 0.45;
+  left: -10px;
+  top: -100px;
+  animation-delay: -4s;
+}
+
+.bubble:nth-child(3) {
+  position: relative;
+  zoom: 0.45;
+  right: -80px;
+  top: -300px;
+  animation-delay: -6s;
+}
+
+.bubble:nth-child(4) {
+  position: relative;
+  zoom: 0.35;
+  left: -120px;
+  bottom: -200px;
+  animation-delay: -3s;
+}
+
+.bubble:nth-child(5) {
+  position: relative;
+  zoom: 0.5;
+  left: 0px;
+  top: 200px;
+  animation-delay: -5s;
+}
+
+@keyframes animate_4010 {
+  0%,100% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+.bubble::before {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 45px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 10;
+  filter: blur(2px);
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 10;
+  filter: blur(2px);
+}
+
+.bubble span {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.bubble span:nth-child(1) {
+  inset: 10px;
+  border-left: 15px solid #0fb4ff;
+  filter: blur(8px);
+}
+
+.bubble span:nth-child(2) {
+  inset: 10px;
+  border-right: 15px solid #ff4484;
+  filter: blur(8px);
+}
+
+.bubble span:nth-child(3) {
+  inset: 10px;
+  border-top: 15px solid #ffeb3b;
+  filter: blur(8px);
+}
+
+.bubble span:nth-child(4) {
+  inset: 30px;
+  border-left: 15px solid #ff4484;
+  filter: blur(12px);
+}
+
+.bubble span:nth-child(5) {
+  inset: 10px;
+  border-bottom: 10px solid #fff;
+  filter: blur(8px);
+  transform: rotate(330deg);
+}
+
+/* Logo image styling to remove white background */
+.logo-img {
+    mix-blend-mode: screen;
+    filter: brightness(0) invert(1);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    }
+
+    &:active {
+        transform: scale(0.9);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+}
+#logo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="header">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" id="logo"><img src="Union (1).svg" alt="DAXYZ" class="w-10 h-10 logo-img">DAXYZ</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active text-white hover:text-primary transition-colors">Home</a>
+                <a href="#projects" class="nav-link text-white hover:text-primary transition-colors">Projects</a>
+                <a href="#skills" class="nav-link text-white hover:text-primary transition-colors">Skills</a>
+                <a href="#contact" class="nav-link text-white hover:text-primary transition-colors">Contact</a>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+                <i class="ri-menu-line ri-lg"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-gray-900 z-50 shadow-lg p-6">
+            <div class="flex justify-end mb-8">
+                <button id="close-menu" class="w-10 h-10 flex items-center justify-center text-white">
+                    <i class="ri-close-line ri-lg"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6">
+                <a href="#home" class="text-white hover:text-primary transition-colors">Home</a>
+                <a href="#projects" class="text-white hover:text-primary transition-colors">Projects</a>
+                <a href="#skills" class="text-white hover:text-primary transition-colors">Skills</a>
+                <a href="#contact" class="text-white hover:text-primary transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 pb-16" style="background-image: url('https://readdy.ai/api/search-image?query=abstract%20minimalist%20dark%20blue%20background%20with%20subtle%20gradient%20and%20geometric%20shapes%2C%20professional%20modern%20tech%20aesthetic%2C%20clean%20design&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl bg-gray-900 bg-opacity-80 p-10 rounded-lg backdrop-blur-sm">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                    <span class="text-white">I'm Sojitra Dax</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-medium mb-6 text-primary">Full Stack Developer</h2>
+                <p class="text-lg text-gray-300 mb-8">Crafting beautiful, responsive, and user-friendly web experiences with modern technologies. Specializing in React, TypeScript, and UI/UX design with a passion for creating intuitive digital solutions.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="px-6 py-3 bg-primary text-white font-medium !rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">View My Work</a>
+                    <a href="#contact" class="px-6 py-3 border border-white text-white font-medium !rounded-button hover:bg-white hover:text-gray-900 transition-colors whitespace-nowrap">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+        <!-- From Uiverse.io by Dennyhml --> 
+<div class="container">
+    <div class="bubble">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="bubble">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="bubble">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="bubble">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="bubble">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+ </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Projects</h2>
+            <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">A selection of my recent work showcasing my skills and expertise in web development and design.</p>
+            
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20dashboard%20interface%20with%20dark%20theme%2C%20showing%20analytics%20and%20product%20management%2C%20professional%20UI%20design%20with%20blue%20accents%2C%20clean%20layout%20with%20data%20visualization&width=600&height=400&seq=proj1&orientation=landscape" alt="E-commerce Dashboard" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-commerce Dashboard</h3>
+                        <p class="text-gray-400 mb-4">A comprehensive admin dashboard for managing online stores with real-time analytics and inventory tracking.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">React</span>
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Redux</span>
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Node.js</span>
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Chart.js</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-primary hover:underline">
+                            View Project <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=creative%20portfolio%20website%20for%20a%20photographer%20with%20minimal%20dark%20theme%2C%20gallery%20grid%20layout%2C%20elegant%20typography%2C%20and%20subtle%20animations%2C%20professional%20modern%20web%20design&width=600&height=400&seq=proj3&orientation=landscape" alt="Photography Portfolio" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Photography Portfolio</h3>
+                        <p class="text-gray-400 mb-4">A minimalist portfolio website for a professional photographer with gallery features and client booking system.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Next.js</span>
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Tailwind CSS</span>
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Framer Motion</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-primary hover:underline">
+                            View Project <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=task%20management%20web%20application%20with%20kanban%20board%20interface%2C%20dark%20themed%20UI%20with%20blue%20accent%20colors%2C%20showing%20task%20cards%2C%20categories%2C%20and%20user%20assignments%2C%20clean%20modern%20design&width=600&height=400&seq=proj4&orientation=landscape" alt="Task Management App" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">TaskFlow</h3>
+                        <p class="text-gray-400 mb-4">A collaborative task management platform with Kanban boards, time tracking, and team collaboration features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Vue.js</span>
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Express</span>
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">MongoDB</span>
+                            <span class="px-2 py-1 text-xs bg-gray-700 rounded-full">Socket.io</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-primary hover:underline">
+                            View Project <i class="ri-arrow-right-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">My Skills</h2>
+            <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">A comprehensive overview of my technical expertise and professional capabilities.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Frontend Development -->
+                <div class="bg-gray-900 p-8 rounded-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-lg mb-6">
+                        <i class="ri-code-s-slash-line ri-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-6">Frontend Development</h3>
+                    
+                    <div class="space-y-6">
+                        <!--<div>
+                            <div class="flex justify-between mb-2">
+                                <span>React / Next.js</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        -->
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>JavaScript / TypeScript</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>HTML5 / CSS3</span>
+                                <span>98%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="98%"></div>
+                            </div>
+                        </div>
+                        
+                        <!--<div>
+                            <div class="flex justify-between mb-2">
+                                <span>Tailwind / SCSS</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Redux / Context API</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88%"></div>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+                
+                <!-- Backend Development -->
+                <div class="bg-gray-900 p-8 rounded-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-lg mb-6">
+                        <i class="ri-server-line ri-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-6">Backend Development</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Node.js / Express</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>MongoDB / Mongoose</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        
+                        <!--<div>
+                            <div class="flex justify-between mb-2">
+                                <span>RESTful APIs</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>GraphQL</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Firebase</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82%"></div>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+                
+                <!-- Design & Tools -->
+                <div class="bg-gray-900 p-8 rounded-lg">
+                    <div class="w-16 h-16 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-lg mb-6">
+                        <i class="ri-tools-line ri-2x text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-6">Design & Tools</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Figma / Adobe XD</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>UI/UX Design</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Git / GitHub</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92%"></div>
+                            </div>
+                        </div>
+                        
+                        <!--<div>
+                            <div class="flex justify-between mb-2">
+                                <span>Webpack / Vite</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span>Jest / Testing Library</span>
+                                <span>78%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="78%"></div>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Get In Touch</h2>
+            <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">Have a project in mind or want to collaborate? Feel free to reach out to me through the form below or via social media.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-gray-800 p-8 rounded-lg">
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label for="name" class="block text-sm font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded border-none" placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium mb-2">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded border-none" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded border-none" placeholder="What is this regarding?">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded border-none resize-none" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full py-3 bg-primary text-white font-medium !rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">Send Message</button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-full mr-4">
+                                    <i class="ri-mail-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">Email</h4>
+                                    <p class="text-gray-400">daxyz07@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-full mr-4">
+                                    <i class="ri-map-pin-line text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">Location</h4>
+                                    <p class="text-gray-400">Surat, Gujarat, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <h3 class="text-xl font-semibold mb-6">Connect With Me</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/daxyz07" class="social-icon w-12 h-12 flex items-center justify-center bg-gray-700 rounded-full">
+                                <i class="ri-github-fill ri-lg"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/dax-sojitra-094541356" class="social-icon w-12 h-12 flex items-center justify-center bg-gray-700 rounded-full">
+                                <i class="ri-linkedin-fill ri-lg"></i>
+                            </a>
+                            <a href="https://x.com/dax_sojitra" class="social-icon w-12 h-12 flex items-center justify-center bg-gray-700 rounded-full">
+                                <i class="ri-twitter-x-fill ri-lg"></i>
+                            </a>
+                            <a href="https://www.instagram.com/daxyz.07/#" class="social-icon w-12 h-12 flex items-center justify-center bg-gray-700 rounded-full">
+                                <i class="ri-instagram-fill ri-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#home" class="text-2xl font-['Pacifico'] text-white">DAXYZ</a>
+                    <p class="text-gray-400 mt-2">Creating digital experiences that matter.</p>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Sojitra Dax. All rights reserved.</p>
+                <p class="text-gray-400 text-sm mt-4 md:mt-0">Last updated: April 17, 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg">
+        <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMenuButton = document.getElementById('close-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.add('open');
+            });
+            
+            closeMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('open');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('open');
+                });
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header Background on Scroll
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-gray-900', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-gray-900', 'shadow-lg');
+                }
+            });
+            
+            // Active Navigation Link
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Skill Bars Animation
+            const skillBars = document.querySelectorAll('.skill-progress');
+            
+            const animateSkillBars = () => {
+                skillBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                });
+            };
+            
+            // Animate on scroll to skills section
+            const skillsSection = document.getElementById('skills');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(animateSkillBars, 300);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            observer.observe(skillsSection);
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project Filters
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Here you would typically filter the projects
+                    // For this demo, we're just toggling the active state
+                });
+            });
+            
+            // Contact Form Submission
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would typically handle form submission
+                // For this demo, we'll just reset the form
+                contactForm.reset();
+                
+                // Show success message (could be implemented with a toast notification)
+                alert('Thank you for your message! I will get back to you soon.');
+            });
+        });
+    </script>
+</body>
+</html>
