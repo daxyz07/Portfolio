@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dax Sojitra | Frontend Developer</title>
+    <title>DAXYZ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -147,151 +147,36 @@
             color: white;
         }
 
-        /* From Uiverse.io by Dennyhml */ 
-.bubble {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  box-shadow: inset 0 0 25px rgba (255, 255, 255, 0.25);
-  animation: animate_4010 8s ease-in-out infinite;
-}
+        /* Logo image styling to remove white background */
+        .logo-img {
+            mix-blend-mode: screen;
+            filter: brightness(0) invert(1);
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            transition: all 0.3s ease;
 
-.bubble:nth-child(2) {
-  position: relative;
-  zoom: 0.45;
-  left: -10px;
-  top: -100px;
-  animation-delay: -4s;
-}
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            }
 
-.bubble:nth-child(3) {
-  position: relative;
-  zoom: 0.45;
-  right: -80px;
-  top: -300px;
-  animation-delay: -6s;
-}
+            &:active {
+                transform: scale(0.9);
+                box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            }
+        }
 
-.bubble:nth-child(4) {
-  position: relative;
-  zoom: 0.35;
-  left: -120px;
-  bottom: -200px;
-  animation-delay: -3s;
-}
-
-.bubble:nth-child(5) {
-  position: relative;
-  zoom: 0.5;
-  left: 0px;
-  top: 200px;
-  animation-delay: -5s;
-}
-
-@keyframes animate_4010 {
-  0%,100% {
-    transform: translateY(-20px);
-  }
-
-  50% {
-    transform: translateY(20px);
-  }
-}
-
-.bubble::before {
-  content: '';
-  position: absolute;
-  top: 50px;
-  left: 45px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #fff;
-  z-index: 10;
-  filter: blur(2px);
-}
-
-.bubble::after {
-  content: '';
-  position: absolute;
-  top: 80px;
-  left: 80px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
-  z-index: 10;
-  filter: blur(2px);
-}
-
-.bubble span {
-  position: absolute;
-  border-radius: 50%;
-}
-
-.bubble span:nth-child(1) {
-  inset: 10px;
-  border-left: 15px solid #0fb4ff;
-  filter: blur(8px);
-}
-
-.bubble span:nth-child(2) {
-  inset: 10px;
-  border-right: 15px solid #ff4484;
-  filter: blur(8px);
-}
-
-.bubble span:nth-child(3) {
-  inset: 10px;
-  border-top: 15px solid #ffeb3b;
-  filter: blur(8px);
-}
-
-.bubble span:nth-child(4) {
-  inset: 30px;
-  border-left: 15px solid #ff4484;
-  filter: blur(12px);
-}
-
-.bubble span:nth-child(5) {
-  inset: 10px;
-  border-bottom: 10px solid #fff;
-  filter: blur(8px);
-  transform: rotate(330deg);
-}
-
-/* Logo image styling to remove white background */
-.logo-img {
-    mix-blend-mode: screen;
-    filter: brightness(0) invert(1);
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-    transition: all 0.3s ease;
-
-    &:hover {
-        transform: scale(1.1);
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-    }
-
-    &:active {
-        transform: scale(0.9);
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-    }
-}
-#logo {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-
+        #logo {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            font-size: 15px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -303,6 +188,7 @@
             <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-8">
                 <a href="#home" class="nav-link active text-white hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="nav-link text-white hover:text-primary transition-colors">About</a>
                 <a href="#projects" class="nav-link text-white hover:text-primary transition-colors">Projects</a>
                 <a href="#skills" class="nav-link text-white hover:text-primary transition-colors">Skills</a>
                 <a href="#contact" class="nav-link text-white hover:text-primary transition-colors">Contact</a>
@@ -323,6 +209,7 @@
             </div>
             <div class="flex flex-col space-y-6">
                 <a href="#home" class="text-white hover:text-primary transition-colors">Home</a>
+                <a href="#about" class="text-white hover:text-primary transition-colors">About</a>
                 <a href="#projects" class="text-white hover:text-primary transition-colors">Projects</a>
                 <a href="#skills" class="text-white hover:text-primary transition-colors">Skills</a>
                 <a href="#contact" class="text-white hover:text-primary transition-colors">Contact</a>
@@ -333,56 +220,97 @@
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center pt-20 pb-16" style="background-image: url('https://readdy.ai/api/search-image?query=abstract%20minimalist%20dark%20blue%20background%20with%20subtle%20gradient%20and%20geometric%20shapes%2C%20professional%20modern%20tech%20aesthetic%2C%20clean%20design&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
         <div class="container mx-auto px-6">
-            <div class="max-w-2xl bg-gray-900 bg-opacity-80 p-10 rounded-lg backdrop-blur-sm">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                    <span class="text-white">I'm Sojitra Dax</span>
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-medium mb-6 text-primary">Full Stack Developer</h2>
-                <p class="text-lg text-gray-300 mb-8">Crafting beautiful, responsive, and user-friendly web experiences with modern technologies. Specializing in React, TypeScript, and UI/UX design with a passion for creating intuitive digital solutions.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#projects" class="px-6 py-3 bg-primary text-white font-medium !rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">View My Work</a>
-                    <a href="#contact" class="px-6 py-3 border border-white text-white font-medium !rounded-button hover:bg-white hover:text-gray-900 transition-colors whitespace-nowrap">Get in Touch</a>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <!-- Profile Photo -->
+                <div class="w-64 h-64 md:w-80 md:h-80 relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-blue-400 rounded-full blur-xl opacity-30"></div>
+                    <img src="profile-photo.jpg" alt="Sojitra Dax" class="w-full h-full object-cover rounded-full border-4 border-primary shadow-lg transform hover:scale-105 transition-transform duration-300">
+                </div>
+                
+                <!-- Hero Content -->
+                <div class="max-w-2xl bg-gray-900 bg-opacity-80 p-10 rounded-lg backdrop-blur-sm">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                        <span class="text-white">I'm Sojitra Dax</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-medium mb-6 text-primary">Full Stack Developer</h2>
+                    <p class="text-lg text-gray-300 mb-8">Crafting beautiful, responsive, and user-friendly web experiences with modern technologies. UI/UX design with a passion for creating intuitive digital solutions.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="px-6 py-3 bg-primary text-white font-medium !rounded-button hover:bg-blue-600 transition-colors whitespace-nowrap">View My Work</a>
+                        <a href="#contact" class="px-6 py-3 border border-white text-white font-medium !rounded-button hover:bg-white hover:text-gray-900 transition-colors whitespace-nowrap">Get in Touch</a>
+                        <a href="Sojitra Dax.docx" class="px-6 py-3 bg-gray-700 text-white font-medium !rounded-button hover:bg-gray-600 transition-colors whitespace-nowrap flex items-center gap-2">
+                            <i class="ri-file-download-line"></i>
+                            Download Resume
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- From Uiverse.io by Dennyhml --> 
-<div class="container">
-    <div class="bubble">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="bubble">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="bubble">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="bubble">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="bubble">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
- </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">About Me</h2>
+            <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">Get to know more about my journey, passion, and what drives me in the world of web development.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- About Content -->
+                <div class="space-y-6">
+                    <p class="text-gray-300 leading-relaxed">
+                        From a young age, I was always the one who was constantly dismantling and reassembling my toys to see how they work. That curiosity eventually led me to the world of coding and web development, where I discovered the joy of creating and problem-solving through code. I've always found something rewarding about turning a client's vision into a live, interactive website.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        I've honed my skills in JavaScript, HTML, CSS, and Python, and I'm always open to learning new languages and frameworks.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        I believe in a balanced lifestyle, so when I'm not coding, I'm usually volunteering at my local animal shelter or exploring nature through hiking. I've found that a refreshed mind helps me approach code from different angles and solutions.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        I'm always excited for opportunities to collaborate on projects that push the boundaries of web development. If you need someone to help build an innovative and user-friendly website, or simply want to chat about the latest trends in tech, feel free to drop me an email at [email]. Skills: HTML, CSS, JavaScript, Python, UX/UI Design, Responsive Web Design
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="bg-gray-900 p-6 rounded-lg">
+                            <div class="w-12 h-12 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-lg mb-4">
+                                <i class="ri-code-box-line ri-xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Clean Code</h3>
+                            <p class="text-gray-400 text-sm">Writing maintainable and efficient code is my top priority.</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 p-6 rounded-lg">
+                            <div class="w-12 h-12 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-lg mb-4">
+                                <i class="ri-palette-line ri-xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">UI/UX Design</h3>
+                            <p class="text-gray-400 text-sm">Creating intuitive and engaging user experiences.</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 p-6 rounded-lg">
+                            <div class="w-12 h-12 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-lg mb-4">
+                                <i class="ri-device-line ri-xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Responsive Design</h3>
+                            <p class="text-gray-400 text-sm">Building websites that work flawlessly across all devices.</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 p-6 rounded-lg">
+                            <div class="w-12 h-12 flex items-center justify-center bg-blue-500 bg-opacity-10 rounded-lg mb-4">
+                                <i class="ri-rocket-line ri-xl text-primary"></i>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Performance</h3>
+                            <p class="text-gray-400 text-sm">Optimizing for speed and efficiency in every project.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- About Image -->
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-blue-400 rounded-lg blur-xl opacity-30"></div>
+                    <img src="Developer-workspace.jpg" alt="Developer Workspace" class="w-full h-auto rounded-lg shadow-xl relative z-10">
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Projects Section -->
@@ -470,19 +398,18 @@
                     <h3 class="text-xl font-semibold mb-6">Frontend Development</h3>
                     
                     <div class="space-y-6">
-                        <!--<div>
+                        <div>
                             <div class="flex justify-between mb-2">
-                                <span>React / Next.js</span>
+                                <span>XML / JSON</span>
                                 <span>95%</span>
                             </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" data-width="95%"></div>
                             </div>
                         </div>
-                        -->
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span>JavaScript / TypeScript</span>
+                                <span>JavaScript / AJAX</span>
                                 <span>90%</span>
                             </div>
                             <div class="skill-bar">
@@ -500,9 +427,9 @@
                             </div>
                         </div>
                         
-                        <!--<div>
+                        <div>
                             <div class="flex justify-between mb-2">
-                                <span>Tailwind / SCSS</span>
+                                <span>Bootstrap / JQuery</span>
                                 <span>92%</span>
                             </div>
                             <div class="skill-bar">
@@ -510,7 +437,7 @@
                             </div>
                         </div>
                         
-                        <div>
+                        <!--<div>
                             <div class="flex justify-between mb-2">
                                 <span>Redux / Context API</span>
                                 <span>88%</span>
@@ -533,7 +460,7 @@
                     <div class="space-y-6">
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span>Node.js / Express</span>
+                                <span>Node.js / Python</span>
                                 <span>85%</span>
                             </div>
                             <div class="skill-bar">
@@ -543,7 +470,7 @@
                         
                         <div>
                             <div class="flex justify-between mb-2">
-                                <span>MongoDB / Mongoose</span>
+                                <span>MongoDB / SQLite</span>
                                 <span>80%</span>
                             </div>
                             <div class="skill-bar">
@@ -743,6 +670,7 @@
                 
                 <div class="flex flex-wrap justify-center gap-6">
                     <a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
                     <a href="#projects" class="text-gray-400 hover:text-white transition-colors">Projects</a>
                     <a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a>
                     <a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a>
